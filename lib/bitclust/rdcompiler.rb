@@ -68,9 +68,9 @@ module BitClust
 
     def setup(src, entry = nil)
       @f = LineInput.new(StringIO.new(src), entry)
-      @out = StringIO.new
+      @out = ""
       yield
-      @out.string
+      @out
     end
 
     def library_file
@@ -107,7 +107,7 @@ module BitClust
     end
 
     def entry_chunk
-      @out.puts '<dl>' if @option[:force]
+      @out << "<dl>\n" if @option[:force]
       first = true
       @f.while_match(/\A---/) do |line|
         method_signature(line, first)
@@ -118,7 +118,7 @@ module BitClust
         k, v = line.sub(/\A:/, '').split(':', 2)
         props[k.strip] = v.strip
       end if @type == :method
-      @out.puts %Q(<dd class="#{@type.to_s}-description">)
+      @out << %Q(<dd class="#{@type.to_s}-description">\n)
       while @f.next?
         case @f.peek
         when /\A===+/
@@ -155,8 +155,8 @@ module BitClust
           end
         end
       end
-      @out.puts '</dd>'
-      @out.puts '</dl>' if @option[:force]
+      @out << "</dd>\n"
+      @out << "</dl>\n" if @option[:force]
     end
 
     def headline(line)
@@ -581,15 +581,15 @@ module BitClust
     end
 
     def string(str)
-      @out.print str
+      @out << str.to_s
     end
 
     def line(str)
-      @out.puts str
+      @out << str.to_s.chomp << "\n"
     end
 
     def nl
-      @out.puts
+      @out << "\n"
     end
 
     def text_node_from_lines(lines)
