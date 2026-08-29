@@ -16,11 +16,10 @@ EOD
 
   s.metadata = {
     "bug_tracker_uri"   => "https://github.com/rurema/bitclust/issues",
-    "documentation_uri" => "https://github.com/rurema/doctree/wiki",
+    "documentation_uri" => "https://github.com/rurema/bitclust/blob/master/doc/usage.md",
     "homepage_uri"      => s.homepage,
     "source_code_uri"   => "https://github.com/rurema/bitclust",
     "github_repo"       => "https://github.com/rurema/bitclust",
-    "wiki_uri"          => "https://github.com/rurema/doctree/wiki",
   }
 
   s.files         = Dir["bin/refe"]
