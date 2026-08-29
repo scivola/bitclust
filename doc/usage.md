@@ -91,7 +91,7 @@ doctree の Markdown ツリー（manual/）から DB を構築します。
 
 ```
 bitclust setup                       # 既定のバージョン群の DB を作る
-bitclust setup --versions=3.4.0,4.0.0
+bitclust setup --versions=3.4,4.0
 bitclust setup --purge               # 生成物と設定をすべて消す
 ```
 
