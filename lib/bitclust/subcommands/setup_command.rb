@@ -20,7 +20,10 @@ module BitClust
         @prepare = nil
         @cleanup = nil
         @purge = nil
-        @versions = ["3.3.0", "3.4.0", "4.0.0"]
+        # teeny は付けない。#%if (version == "V") や #%version V の等値ゲートは
+        # 文字列一致なので、teeny 付きの版名で DB を作ると doctree CI・
+        # 生成済みドキュメントとゲートの判定がずれる
+        @versions = ["3.3", "3.4", "4.0"]
         @update = true
         @parser.banner = "Usage: #{File.basename($0, '.*')} setup [options]"
         @parser.on('--prepare', 'Prepare config file and checkout repository. Do not create database.') {
